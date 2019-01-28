@@ -1,0 +1,9 @@
+node_modules/
+
+settings.json
+.meteor/.finished-upgraders
+.meteor/.gitignore
+.meteor/.id
+
+# ------------- vscode gitignore
+.vscode

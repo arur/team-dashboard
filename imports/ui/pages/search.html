@@ -1,0 +1,14 @@
+<template name="search">
+  <div>
+    <form id="search" class="form-inline">
+      <div class="form-group">
+        <label class="sr-only" for="term">Serch term</label>
+        <input type="text"
+        class="form-control" id="term" name="term" placeholder="User's first name" />
+      </div>
+      <button type="submit" class="btn btn-default">Search</button>
+    </form>
+  </div>
+
+  {{> userList}}
+</template>

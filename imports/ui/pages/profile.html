@@ -1,0 +1,63 @@
+<template name="profile">
+  <div class="container">
+    <div>
+      <h1 class="page-header">Profile</h1>
+      <div class="btn-group btn-edit">
+        <button class="btn btn-default edit">
+          {{#if editMode}} Close form {{else}} Edit {{/if}}
+        </button>
+      </div>
+      {{#if editMode}}
+      <div>
+        <!-- Personal data update form -->
+        {{> quickForm
+          collection="Meteor.users"
+          doc=currentUser
+          id=updateProfileId
+          type="update"
+          class="profile-form"
+          buttonContent="Update profile"
+          omitFields="emails, services, createdAt"
+        }}
+      </div>
+      {{else}}
+      <div class="panel panel-default">
+        <div class="panel-heading">Personal Data</div>
+        <!-- Personal data -->
+        <table class="table mt-1">
+          <tbody>
+            <tr>
+              <td>First Name</td>
+              <td>{{ user.personalData.firstName }}</td>
+            </tr>
+            <tr>
+              <td>Last Name</td>
+              <td>{{ user.personalData.lastName }}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>{{user.emails.[0].address}}</td>
+            </tr>
+            <tr>
+              <td>Date of Birth</td>
+              <td>{{ user.personalData.birthday }}</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>{{ user.personalData.gender }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      {{/if}}
+    </div>
+    <hr />
+    <div>
+      <h2>My Teams</h2>
+      {{#if Template.subscriptionsReady}} {{#each teams}} {{> team}} {{/each}}
+      {{else}}
+      <p>Loading</p>
+      {{/if}}
+    </div>
+  </div>
+</template>

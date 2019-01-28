@@ -1,0 +1,17 @@
+<template name="teams">
+  <div class="container">
+    <div>
+      <h1 class="page-header">Teams</h1>
+      {{> newTeam}}
+      <section class="teams">
+        <h2>Team list</h2>
+        <div class="list-group">
+          {{#if Template.subscriptionsReady}} {{#each teams}} {{> team}}
+          {{/each}} {{else}}
+          <p>Loading</p>
+          {{/if}}
+        </div>
+      </section>
+    </div>
+  </div>
+</template>

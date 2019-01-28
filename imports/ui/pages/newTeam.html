@@ -1,0 +1,16 @@
+<template name="newTeam">
+  <div class="new-team-container">
+    <div class="panel panel-default">
+      <div class="panel-heading">Create Team</div>
+      <div class="panel-body">
+        {{> quickForm
+          collection="Teams"
+          id="insertTeamForm"
+          type="insert"
+          class="new-team-form"
+          buttonContent="Create"
+        }}
+      </div>
+    </div>
+  </div>
+</template>

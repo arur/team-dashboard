@@ -1,0 +1,74 @@
+<template name="teamSingle">
+  <div class="container">
+    <div>
+      <h1 class="page-header">Team Details</h1>
+
+      <!-- Display edit and delete buttons to the owner of the team only -->
+      {{#if isOwner team.createdBy}}
+      <div class="btn-group btn-edit">
+        <button class="btn btn-default edit">
+          {{#if editMode}} Close form {{else}} Edit {{/if}}
+        </button>
+        <button class="btn btn-danger delete-team">Delete</button>
+      </div>
+      {{/if}}
+      
+      <!-- Display update form if in edit mode -->
+      {{#if editMode}}
+      <div class="panel panel-default">
+        <div class="panel-heading">Update Team</div>
+        <div class="panel-body">
+          {{> quickForm
+            collection="Teams"
+            doc=team
+            id="updateTeam"
+            type="update"
+            class="team-form"
+            buttonContent="Update"
+            omitFields="createdAt, createdBy"
+          }}
+        </div>
+      </div>
+
+      {{else}}
+      <!-- Display team details if is not in edit mode -->
+
+
+      <div class="panel panel-default">
+          <div class="panel-body">
+            <h2>{{ team.name }}</h2>
+            <p>{{ team.description }}</p>
+          </div>
+      </div>
+      {{/if}}
+
+      <hr />
+      <h2>Team Members</h2>
+      <ul class="list-group">
+        {{#each members team.members}}
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-8">
+              {{ personalData.firstName }} {{personalData.lastName }}
+            </div>
+            <div class="col-md-4">
+              {{#if isOwner team.createdBy}}
+                {{#if notCreator team.createdBy _id}}
+                <button class="btn btn-deny pull-right remove-member">Remove from Team</button>
+                {{/if}}
+              {{/if}}
+            </div>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+      {{#if isOwner team.createdBy}}
+      <section>
+        <h2>Add a member</h2>
+        <p>Search for a user to add them to this team.</p>
+        {{> search}}
+      </section>
+      {{/if}}
+    </div>
+  </div>
+</template>

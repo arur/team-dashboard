@@ -1,0 +1,10 @@
+show collections
+db.users.find({})
+db.users.find({}).pretty
+db.users.find({}).pretty()
+db.users.find({}).count()
+db.users.find({})
+db.users.find({})
+db.users.find({})
+db.users.find({}).pretty
+db.users.find({}).pretty()
