@@ -1,7 +1,7 @@
 # team-dashboard
 Small app to manage teams
 
-[Screenshot of Team Details page](./team-dashboard.png "Team Details")
+![Screenshot of Team Details page](./team-dashboard.png "Team Details")
 
 ## General flow
 
